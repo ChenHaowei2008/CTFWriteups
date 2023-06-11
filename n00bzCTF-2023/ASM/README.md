@@ -24,6 +24,7 @@ RAX is a very special register, in that it is where return values are usually st
 One big contender was the read funciton, which returns the amount of bytes read.
 
 Another issue that we have is that we don't have a binsh string! However, on closer inspect of the bianry in ghidra, we can see this little guy:
+
 ![binsh](binsh.png)
 
 Now that we have everything, here is our plan of attack:
@@ -35,6 +36,7 @@ Now that we have everything, here is our plan of attack:
 Solve script in main.py
 
 Wow it works!!
+
 ![binsh](flag.png)
 
 Flag:
