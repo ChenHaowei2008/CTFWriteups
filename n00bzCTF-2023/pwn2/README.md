@@ -1,6 +1,12 @@
 # pwn2
 
+![desc](desc.png)
+
 This program is slightly different from the last one. It gives us two inputs. I honestly didn't know why. I just decided to perform a ret2libc attack since it was the most straight forward.
+
+Also, this challenge doesn't have a win function
+
+![nowin](nowin.png)
 
 In order to perform a ret2libc attack, we must first figure out what version of libc it is, as different libcs have different function offsets. However, the addresses of the functions change every time the program is run. This is supposed to be a form of protection against this attack.
 
@@ -36,9 +42,13 @@ puts_leak = u64(p.recvline().strip().ljust(8, b'\x00'))
 # system_leak = u64(p.recvline().strip().ljust(8, b'\x00'))
 ```
 
-Basically, we are pointing the RIP to different snippets of code. These snippets of code combined will allow us to controlt he flow of the program.
+Basically, we are pointing the RIP to different snippets of code. These snippets of code combined will allow us to control the flow of the program.
+
+![leak](leak.png)
 
 With the values we obtained, we can go to https://libc.rip to figure out what libc version the program is using.
+
+![libc](libc.png)
 
 After downloading the libc, we must calculate the libc base. Remember how I said that the funciton addresses in the GOT change everytime when program is run? There is actually a pattern to how it is done. All the functions share a libc base, and with the libc, we know all the offsets of the functions.
 
@@ -46,10 +56,13 @@ We can simply take the libcbase + offset of the function in libc to get the addr
 
 Libcs conatain a lot of useful functions, and right now we will make use of the system and binsh string within the libc.
 
+Pro-tip: You can use pwninit to patch the bianry to specifically use the same libc as the server. This is useful for debugging with gdb.attach(p)
+
+![pwninit](pwninit.png)
+
 Here is what our payload looks like now:
 
 ```
-
 libc = ELF("./libc6_2.35-0ubuntu3.1_amd64.so", checksec=False)
 
 libcBase = puts_leak - libc.symbols['puts']
@@ -62,6 +75,8 @@ payload += ret
 payload += poprdi + binsh
 payload += system
 ```
+
+![flag](flag.png)
 
 Wow it works :thumbsup:
 
