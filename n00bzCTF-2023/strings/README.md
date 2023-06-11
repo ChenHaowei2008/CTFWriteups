@@ -32,6 +32,8 @@ Using r2, we can use `iS` to see all the sections, and use `px @ <address>` to p
 
 ![dataSection](dataSection.png)
 
+Btw, we also need the offset of our input, which is 6
+
 Now that we have the address of the fake flag, we can write our solve script
 
 script in main.py
