@@ -1,7 +1,9 @@
 # ASM
 ![description](description.jpg)
+
 This challenge was the most difficult of all the pwn challenges. We are given a bare binary, with only two functions, _start and vuln.
-![functions](functions.jpg)
+
+![functions](functions.png)
 
 This was probably written in pure assembly, which is why its missing all the other functions like puts or printf.
 
@@ -10,7 +12,7 @@ This time, unlike pwn3, we truly have nothing, nother than syscall.
 Syscall is very powerful, however, in order to control what the syscall function does, we need to be able to control the RAX register.
 
 Using ropper and grep, we can see which ROP gadgets contain rax in them.
-![gadgets](gadgets.jpg)
+![gadgets](gadgets.png)
 
 
 ...that is not a lot. We don't have any direct way of popping RAX and inserting a value.
