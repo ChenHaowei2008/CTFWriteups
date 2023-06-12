@@ -1,6 +1,6 @@
 # n00bzCTF
 
-Over the past few days, I participated in n00bzCTF by myself (and did quite poorly ~40th place).
+Over the past few days, I participated in n00bzCTF by myself (and did quite poorly ~70th place).
 
 However, I did bring back one achievement, which was that I full solved pwn.
 
