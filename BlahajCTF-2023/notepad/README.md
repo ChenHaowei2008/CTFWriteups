@@ -186,6 +186,6 @@ This is the same as before.
 
 `pack(elf.got['puts'])` is our target that we will overwrite into.
 
-What a peak simple challenge that only requires two packed to the max payload.
+What a peak simple challenge that only requires two packed to the max payloads.
 
 Full soltion can be found in `notepad.py`
