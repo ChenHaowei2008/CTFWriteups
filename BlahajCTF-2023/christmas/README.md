@@ -279,8 +279,6 @@ ptrGuard = u64(p.recvline().strip().ljust(8, b'\x00'))
 print(hex(ptrGuard))
 ```
 
-PICTURE HERE
-
 By the way, the function to encrypt our pointer is this:
 
 ```py
