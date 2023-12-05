@@ -226,7 +226,7 @@ The FD pointer in the unsorted bin is different, as it points to the main_arena 
 
 Do note that if you free a huge chunk and there isn't a chunk after it, the chunk will be "consolidated" and combined with the forest, preventing you from access the FD pointer.
 
-As such, I will allocated another chunk after the big one to prevent this consolidation.
+As such, I will allocate another chunk after the big one to prevent this consolidation.
 
 After that, we will allocate a chunk of size 0, and the huge unsorted bin chunk will be split into two, one for our new chunk and the remainder will continue being free.
 
