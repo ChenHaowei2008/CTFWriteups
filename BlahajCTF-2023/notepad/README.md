@@ -4,6 +4,8 @@
 
 This is my personal favourite challenge because of its simplicity and how much stuff I have to cram my payload with
 
+![checksec](pictures/checksec.png)
+
 Here is the Ghidra decompilation
 
 ```c
