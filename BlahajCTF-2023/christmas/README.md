@@ -18,7 +18,7 @@ We had 4 options when running the program:
 
 2) Remove wish
 
-    - This was a free function. However, a simple doubule free or use after free is not possible as they set the pointer to the chunk to null after they are done using it (Good programming practices?? :astonished:)
+    - This was a free function. However, a simple double free or use after free is not possible as they set the pointer to the chunk to null after they are done using it. (Good programming practices?? :astonished:)
 
 3) View wish
 
@@ -28,7 +28,7 @@ We had 4 options when running the program:
 
     - This just breaks out of the loop and exits the program.
 
-Here is the decompilation that ghidra has provided:
+Here is the decompilation that Ghidra has provided:
 
 ```c
 
@@ -158,7 +158,7 @@ The malloc function doesn't check whether our index is less than 0. Meaning that
 
 None of these help us when overwritten. 
 
-However, ghidra is a liar. There is actually another variable before the array of chunks that is not shown.
+However, Ghidra is a liar. There is actually another variable before the array of chunks that is not shown.
 
 Lets look at the disassembly of the main function. Here is the important part:
 
@@ -184,7 +184,7 @@ The only variables after the array of chunks is our buffer.
 
 We can control our buffer to put whatever we want in there.
 
-Putting two and two together, you may realise that we can enter in whatever address we want into our buffer, and the call `free()` on it, effectively allowing us to perform a double free, use after free, or basically whatever heap attack you wanted.
+Putting two and two together, you may realise that we can enter in whatever address we want into our buffer, and then call `free()` on it, effectively allowing us to perform a double free, use after free, or basically whatever heap attack you wanted.
 
 Now that we have all of our vulnerabilities established, let me explain my solution.
 
