@@ -1,5 +1,7 @@
 # CARS
 
+![chall](pictures/chall.png)
+
 How kind, the source code is given.
 
 ```c
